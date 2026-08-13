@@ -1,0 +1,681 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>kaokao logo round 1</title>
+  <style>
+    :root {
+      --deep: #123d39;
+      --ink: #173f35;
+      --bamboo: #6f8f80;
+      --celadon: #dce8df;
+      --paper: #f4efe5;
+      --mist: #eef3ef;
+      --text: #1f2421;
+      --muted: #68716b;
+      --line: #d7ded8;
+      --panel: #fbfaf6;
+      --mono: ui-monospace, "SF Mono", Menlo, Consolas, monospace;
+      --sans: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    }
+
+    * { box-sizing: border-box; }
+
+    body {
+      margin: 0;
+      background: #f6f4ee;
+      color: var(--text);
+      font-family: var(--sans);
+      letter-spacing: 0;
+    }
+
+    .page {
+      max-width: 1240px;
+      margin: 0 auto;
+      padding: 48px 28px 72px;
+    }
+
+    header {
+      display: grid;
+      grid-template-columns: 1fr auto;
+      gap: 24px;
+      align-items: end;
+      margin-bottom: 30px;
+      border-bottom: 1px solid var(--line);
+      padding-bottom: 24px;
+    }
+
+    h1 {
+      margin: 0 0 8px;
+      font-size: 34px;
+      line-height: 1.1;
+      font-weight: 650;
+    }
+
+    .subtitle {
+      color: var(--muted);
+      font-size: 15px;
+      line-height: 1.7;
+      max-width: 760px;
+    }
+
+    .stamp {
+      width: 88px;
+      height: 88px;
+      border-radius: 24px;
+      background: var(--deep);
+      display: grid;
+      place-items: center;
+    }
+
+    .section-title {
+      margin: 36px 0 16px;
+      font-size: 18px;
+      font-weight: 650;
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 18px;
+    }
+
+    .card {
+      background: var(--panel);
+      border: 1px solid var(--line);
+      border-radius: 10px;
+      overflow: hidden;
+    }
+
+    .card-head {
+      padding: 18px 18px 14px;
+      border-bottom: 1px solid var(--line);
+      display: flex;
+      justify-content: space-between;
+      gap: 16px;
+      align-items: start;
+    }
+
+    .card h2 {
+      margin: 0;
+      font-size: 18px;
+      font-weight: 650;
+    }
+
+    .tag {
+      color: var(--muted);
+      font-size: 12px;
+      font-family: var(--mono);
+      white-space: nowrap;
+      margin-top: 2px;
+    }
+
+    .note {
+      color: var(--muted);
+      font-size: 13px;
+      line-height: 1.6;
+      margin: 8px 0 0;
+    }
+
+    .brand-row {
+      display: grid;
+      grid-template-columns: 140px 1fr;
+      gap: 18px;
+      padding: 18px;
+      align-items: center;
+    }
+
+    .appicon {
+      width: 128px;
+      height: 128px;
+      border-radius: 30px;
+      display: grid;
+      place-items: center;
+      box-shadow: 0 18px 38px rgba(26, 46, 40, 0.18), inset 0 0 0 1px rgba(255,255,255,.06);
+    }
+
+    .appicon.flat { box-shadow: inset 0 0 0 1px rgba(255,255,255,.08); }
+    .deep { background: var(--deep); }
+    .ink { background: var(--ink); }
+    .bamboo { background: #274f44; }
+
+    .wordmark {
+      font-size: 42px;
+      line-height: 1;
+      font-weight: 560;
+      letter-spacing: .055em;
+      color: var(--text);
+      display: inline-flex;
+      align-items: baseline;
+      gap: .012em;
+    }
+
+    .wordmark .o {
+      display: inline-grid;
+      place-items: center;
+      width: .76em;
+      height: .78em;
+      border: .075em solid currentColor;
+      border-radius: 50%;
+      transform: translateY(.06em);
+      margin: 0 .02em;
+      position: relative;
+    }
+
+    .wordmark .o::after {
+      content: "";
+      width: .14em;
+      height: .14em;
+      border-radius: 50%;
+      background: currentColor;
+      opacity: .52;
+      transform: translate(.08em, -.02em);
+    }
+
+    .wordmark .o.soft::after { opacity: .22; }
+    .wordmark .o.cut { border-right-color: transparent; }
+    .wordmark .o.leftcut { border-left-color: transparent; }
+
+    .combo {
+      margin-top: 22px;
+      display: flex;
+      align-items: center;
+      gap: 14px;
+    }
+
+    .combo svg { flex: 0 0 auto; }
+    .combo .wordmark { font-size: 30px; }
+
+    .tests {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      border-top: 1px solid var(--line);
+    }
+
+    .test {
+      padding: 14px;
+      min-height: 120px;
+      border-right: 1px solid var(--line);
+    }
+
+    .test:last-child { border-right: 0; }
+
+    .test-label {
+      font-size: 12px;
+      color: var(--muted);
+      font-family: var(--mono);
+      margin-bottom: 10px;
+    }
+
+    .sizes {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+    }
+
+    .size32 { width: 32px; height: 32px; border-radius: 7px; }
+    .size128 { width: 64px; height: 64px; border-radius: 15px; }
+    .size1024 { width: 88px; height: 88px; border-radius: 20px; }
+
+    .mono-swatch {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+    }
+
+    .mono-box {
+      width: 70px;
+      height: 70px;
+      border-radius: 16px;
+      background: #111;
+      display: grid;
+      place-items: center;
+    }
+
+    .mockups {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 14px;
+      margin-top: 18px;
+    }
+
+    .mock {
+      background: #fffdf7;
+      border: 1px solid var(--line);
+      border-radius: 10px;
+      min-height: 146px;
+      padding: 14px;
+    }
+
+    .mock-title {
+      font-size: 12px;
+      font-family: var(--mono);
+      color: var(--muted);
+      margin-bottom: 12px;
+    }
+
+    .dock {
+      display: flex;
+      gap: 8px;
+      align-items: end;
+      justify-content: center;
+      padding-top: 34px;
+    }
+
+    .dock .fake {
+      width: 34px;
+      height: 34px;
+      border-radius: 10px;
+      background: #d8ddd8;
+    }
+
+    .phone {
+      width: 78px;
+      height: 116px;
+      border-radius: 18px;
+      background: #e7ece7;
+      margin: 0 auto;
+      padding: 14px 10px;
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 8px;
+      align-content: start;
+    }
+
+    .phone .fake {
+      width: 26px;
+      height: 26px;
+      border-radius: 8px;
+      background: #cdd5ce;
+    }
+
+    .splash {
+      min-height: 96px;
+      border-radius: 8px;
+      background: #f4efe5;
+      display: grid;
+      place-items: center;
+    }
+
+    .webbar {
+      height: 54px;
+      border-radius: 8px;
+      background: #f4efe5;
+      display: flex;
+      align-items: center;
+      padding: 0 16px;
+      gap: 10px;
+    }
+
+    .webbar .line {
+      margin-left: auto;
+      width: 92px;
+      height: 8px;
+      border-radius: 8px;
+      background: #d7ded8;
+    }
+
+    .legend {
+      margin-top: 28px;
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 12px;
+    }
+
+    .chip {
+      border: 1px solid var(--line);
+      background: #fffdf7;
+      border-radius: 8px;
+      padding: 12px;
+      font-size: 13px;
+      color: var(--muted);
+      line-height: 1.5;
+    }
+
+    .chip strong {
+      color: var(--text);
+      display: block;
+      margin-bottom: 4px;
+    }
+
+    svg { overflow: visible; }
+
+    @media (max-width: 900px) {
+      header, .grid, .brand-row, .mockups, .legend { grid-template-columns: 1fr; }
+      .tests { grid-template-columns: 1fr; }
+      .test { border-right: 0; border-bottom: 1px solid var(--line); }
+      .test:last-child { border-bottom: 0; }
+    }
+  </style>
+</head>
+<body>
+  <div class="page">
+    <header>
+      <div>
+        <h1>kaokao logo round 1</h1>
+        <div class="subtitle">
+          3 条主方向，每条 2 个小变体。此页用于判断符号骨架、字标节奏、小尺寸识别和应用场景气质，不是最终精修制图。
+        </div>
+      </div>
+      <div class="stamp">
+        <svg width="62" height="62" viewBox="0 0 64 64" aria-hidden="true">
+          <g fill="none" stroke="#f4efe5" stroke-width="5.6" stroke-linecap="round">
+            <circle cx="25" cy="30" r="15" stroke-dasharray="78 17" transform="rotate(-32 25 30)" />
+            <circle cx="39" cy="34" r="15" stroke-dasharray="78 17" transform="rotate(148 39 34)" />
+          </g>
+        </svg>
+      </div>
+    </header>
+
+    <div class="legend">
+      <div class="chip"><strong>主色</strong>深青、墨绿、竹青。先纯平，后续再探索材质。</div>
+      <div class="chip"><strong>符号</strong>纸白等线宽双环，轻微错位与开口。</div>
+      <div class="chip"><strong>字标</strong>全小写 kaokao，略微疏朗，o 有轻微回应感。</div>
+      <div class="chip"><strong>气质</strong>静中有动，安静但不乖，东方但不古风。</div>
+    </div>
+
+    <div class="section-title">Direction A: 双环印象</div>
+    <div class="grid">
+      <article class="card">
+        <div class="card-head">
+          <div>
+            <h2>A1 / balanced echo</h2>
+            <p class="note">最稳的基准版。双环轻微错位，开口相对克制，适合成为主候选。</p>
+          </div>
+          <div class="tag">icon-first</div>
+        </div>
+        <div class="brand-row">
+          <div class="appicon deep">
+            <svg width="86" height="86" viewBox="0 0 86 86">
+              <g fill="none" stroke="#f4efe5" stroke-width="7" stroke-linecap="round">
+                <circle cx="34" cy="40" r="20" stroke-dasharray="103 22" transform="rotate(-34 34 40)" />
+                <circle cx="52" cy="46" r="20" stroke-dasharray="103 22" transform="rotate(146 52 46)" />
+              </g>
+            </svg>
+          </div>
+          <div>
+            <div class="wordmark"><span>ka</span><span class="o soft"></span><span>ka</span><span class="o soft"></span></div>
+            <div class="combo">
+              <svg width="44" height="44" viewBox="0 0 86 86">
+                <g fill="none" stroke="#173f35" stroke-width="7" stroke-linecap="round">
+                  <circle cx="34" cy="40" r="20" stroke-dasharray="103 22" transform="rotate(-34 34 40)" />
+                  <circle cx="52" cy="46" r="20" stroke-dasharray="103 22" transform="rotate(146 52 46)" />
+                </g>
+              </svg>
+              <div class="wordmark"><span>ka</span><span class="o soft"></span><span>ka</span><span class="o soft"></span></div>
+            </div>
+          </div>
+        </div>
+        <div class="tests">
+          <div class="test"><div class="test-label">size test</div><div class="sizes">
+            <div class="appicon deep size32"><svg width="22" height="22" viewBox="0 0 86 86"><g fill="none" stroke="#f4efe5" stroke-width="9" stroke-linecap="round"><circle cx="34" cy="40" r="20" stroke-dasharray="100 25" transform="rotate(-34 34 40)" /><circle cx="52" cy="46" r="20" stroke-dasharray="100 25" transform="rotate(146 52 46)" /></g></svg></div>
+            <div class="appicon deep size128"><svg width="44" height="44" viewBox="0 0 86 86"><g fill="none" stroke="#f4efe5" stroke-width="8" stroke-linecap="round"><circle cx="34" cy="40" r="20" stroke-dasharray="103 22" transform="rotate(-34 34 40)" /><circle cx="52" cy="46" r="20" stroke-dasharray="103 22" transform="rotate(146 52 46)" /></g></svg></div>
+            <div class="appicon deep size1024"><svg width="60" height="60" viewBox="0 0 86 86"><g fill="none" stroke="#f4efe5" stroke-width="7" stroke-linecap="round"><circle cx="34" cy="40" r="20" stroke-dasharray="103 22" transform="rotate(-34 34 40)" /><circle cx="52" cy="46" r="20" stroke-dasharray="103 22" transform="rotate(146 52 46)" /></g></svg></div>
+          </div></div>
+          <div class="test"><div class="test-label">black / white</div><div class="mono-swatch"><div class="mono-box"><svg width="48" height="48" viewBox="0 0 86 86"><g fill="none" stroke="#fff" stroke-width="7" stroke-linecap="round"><circle cx="34" cy="40" r="20" stroke-dasharray="103 22" transform="rotate(-34 34 40)" /><circle cx="52" cy="46" r="20" stroke-dasharray="103 22" transform="rotate(146 52 46)" /></g></svg></div><div style="color:#111;font-size:13px;">structure holds</div></div></div>
+          <div class="test"><div class="test-label">remark</div><div class="note">稳，像一个成熟 app icon。风险是独特性稍弱。</div></div>
+        </div>
+      </article>
+
+      <article class="card">
+        <div class="card-head">
+          <div>
+            <h2>A2 / seal echo</h2>
+            <p class="note">双环更靠近，印章感略强，但仍无外框。比 A1 更像器物。</p>
+          </div>
+          <div class="tag">artifact</div>
+        </div>
+        <div class="brand-row">
+          <div class="appicon ink">
+            <svg width="86" height="86" viewBox="0 0 86 86">
+              <g fill="none" stroke="#f4efe5" stroke-width="7.5" stroke-linecap="round">
+                <circle cx="38" cy="43" r="22" stroke-dasharray="113 25" transform="rotate(42 38 43)" />
+                <circle cx="48" cy="43" r="22" stroke-dasharray="113 25" transform="rotate(222 48 43)" />
+              </g>
+            </svg>
+          </div>
+          <div>
+            <div class="wordmark"><span>ka</span><span class="o"></span><span>ka</span><span class="o"></span></div>
+            <div class="combo">
+              <svg width="44" height="44" viewBox="0 0 86 86">
+                <g fill="none" stroke="#123d39" stroke-width="7.5" stroke-linecap="round">
+                  <circle cx="38" cy="43" r="22" stroke-dasharray="113 25" transform="rotate(42 38 43)" />
+                  <circle cx="48" cy="43" r="22" stroke-dasharray="113 25" transform="rotate(222 48 43)" />
+                </g>
+              </svg>
+              <div class="wordmark"><span>ka</span><span class="o"></span><span>ka</span><span class="o"></span></div>
+            </div>
+          </div>
+        </div>
+        <div class="tests">
+          <div class="test"><div class="test-label">size test</div><div class="sizes">
+            <div class="appicon ink size32"><svg width="22" height="22" viewBox="0 0 86 86"><g fill="none" stroke="#f4efe5" stroke-width="9" stroke-linecap="round"><circle cx="38" cy="43" r="22" stroke-dasharray="108 30" transform="rotate(42 38 43)" /><circle cx="48" cy="43" r="22" stroke-dasharray="108 30" transform="rotate(222 48 43)" /></g></svg></div>
+            <div class="appicon ink size128"><svg width="44" height="44" viewBox="0 0 86 86"><g fill="none" stroke="#f4efe5" stroke-width="8" stroke-linecap="round"><circle cx="38" cy="43" r="22" stroke-dasharray="113 25" transform="rotate(42 38 43)" /><circle cx="48" cy="43" r="22" stroke-dasharray="113 25" transform="rotate(222 48 43)" /></g></svg></div>
+            <div class="appicon ink size1024"><svg width="60" height="60" viewBox="0 0 86 86"><g fill="none" stroke="#f4efe5" stroke-width="7.5" stroke-linecap="round"><circle cx="38" cy="43" r="22" stroke-dasharray="113 25" transform="rotate(42 38 43)" /><circle cx="48" cy="43" r="22" stroke-dasharray="113 25" transform="rotate(222 48 43)" /></g></svg></div>
+          </div></div>
+          <div class="test"><div class="test-label">black / white</div><div class="mono-swatch"><div class="mono-box"><svg width="48" height="48" viewBox="0 0 86 86"><g fill="none" stroke="#fff" stroke-width="7.5" stroke-linecap="round"><circle cx="38" cy="43" r="22" stroke-dasharray="113 25" transform="rotate(42 38 43)" /><circle cx="48" cy="43" r="22" stroke-dasharray="113 25" transform="rotate(222 48 43)" /></g></svg></div><div style="color:#111;font-size:13px;">more seal-like</div></div></div>
+          <div class="test"><div class="test-label">remark</div><div class="note">器物感较好。风险是两个环在小尺寸可能略密。</div></div>
+        </div>
+      </article>
+    </div>
+
+    <div class="section-title">Direction B: 回声字形</div>
+    <div class="grid">
+      <article class="card">
+        <div class="card-head">
+          <div>
+            <h2>B1 / watching echo</h2>
+            <p class="note">两个 o 的轻微“看见/回应”感更明显，但尽量不进入表情包。</p>
+          </div>
+          <div class="tag">wordmark-first</div>
+        </div>
+        <div class="brand-row">
+          <div class="appicon bamboo">
+            <svg width="86" height="86" viewBox="0 0 86 86">
+              <g fill="none" stroke="#f4efe5" stroke-width="7" stroke-linecap="round">
+                <circle cx="32" cy="43" r="18" stroke-dasharray="91 22" transform="rotate(-8 32 43)" />
+                <circle cx="54" cy="43" r="18" stroke-dasharray="91 22" transform="rotate(188 54 43)" />
+              </g>
+              <g fill="#f4efe5" opacity=".58">
+                <circle cx="35" cy="39" r="2.6" />
+                <circle cx="57" cy="39" r="2.6" />
+              </g>
+            </svg>
+          </div>
+          <div>
+            <div class="wordmark"><span>ka</span><span class="o"></span><span>ka</span><span class="o"></span></div>
+            <div class="combo">
+              <svg width="44" height="44" viewBox="0 0 86 86">
+                <g fill="none" stroke="#274f44" stroke-width="7" stroke-linecap="round">
+                  <circle cx="32" cy="43" r="18" stroke-dasharray="91 22" transform="rotate(-8 32 43)" />
+                  <circle cx="54" cy="43" r="18" stroke-dasharray="91 22" transform="rotate(188 54 43)" />
+                </g>
+                <g fill="#274f44" opacity=".58"><circle cx="35" cy="39" r="2.6" /><circle cx="57" cy="39" r="2.6" /></g>
+              </svg>
+              <div class="wordmark"><span>ka</span><span class="o"></span><span>ka</span><span class="o"></span></div>
+            </div>
+          </div>
+        </div>
+        <div class="tests">
+          <div class="test"><div class="test-label">size test</div><div class="sizes">
+            <div class="appicon bamboo size32"><svg width="22" height="22" viewBox="0 0 86 86"><g fill="none" stroke="#f4efe5" stroke-width="9" stroke-linecap="round"><circle cx="32" cy="43" r="18" stroke-dasharray="88 25" transform="rotate(-8 32 43)" /><circle cx="54" cy="43" r="18" stroke-dasharray="88 25" transform="rotate(188 54 43)" /></g></svg></div>
+            <div class="appicon bamboo size128"><svg width="44" height="44" viewBox="0 0 86 86"><g fill="none" stroke="#f4efe5" stroke-width="8" stroke-linecap="round"><circle cx="32" cy="43" r="18" stroke-dasharray="91 22" transform="rotate(-8 32 43)" /><circle cx="54" cy="43" r="18" stroke-dasharray="91 22" transform="rotate(188 54 43)" /></g><g fill="#f4efe5" opacity=".55"><circle cx="35" cy="39" r="2.6" /><circle cx="57" cy="39" r="2.6" /></g></svg></div>
+            <div class="appicon bamboo size1024"><svg width="60" height="60" viewBox="0 0 86 86"><g fill="none" stroke="#f4efe5" stroke-width="7" stroke-linecap="round"><circle cx="32" cy="43" r="18" stroke-dasharray="91 22" transform="rotate(-8 32 43)" /><circle cx="54" cy="43" r="18" stroke-dasharray="91 22" transform="rotate(188 54 43)" /></g><g fill="#f4efe5" opacity=".58"><circle cx="35" cy="39" r="2.6" /><circle cx="57" cy="39" r="2.6" /></g></svg></div>
+          </div></div>
+          <div class="test"><div class="test-label">black / white</div><div class="mono-swatch"><div class="mono-box"><svg width="48" height="48" viewBox="0 0 86 86"><g fill="none" stroke="#fff" stroke-width="7" stroke-linecap="round"><circle cx="32" cy="43" r="18" stroke-dasharray="91 22" transform="rotate(-8 32 43)" /><circle cx="54" cy="43" r="18" stroke-dasharray="91 22" transform="rotate(188 54 43)" /></g><g fill="#fff" opacity=".58"><circle cx="35" cy="39" r="2.6" /><circle cx="57" cy="39" r="2.6" /></g></svg></div><div style="color:#111;font-size:13px;">most playful</div></div></div>
+          <div class="test"><div class="test-label">remark</div><div class="note">记忆点强。风险是接近“眼睛”，需要控制成熟度。</div></div>
+        </div>
+      </article>
+
+      <article class="card">
+        <div class="card-head">
+          <div>
+            <h2>B2 / quiet eyes</h2>
+            <p class="note">弱化表情，只保留两个 o 的回应节奏，更适合长期使用。</p>
+          </div>
+          <div class="tag">subtle</div>
+        </div>
+        <div class="brand-row">
+          <div class="appicon deep">
+            <svg width="86" height="86" viewBox="0 0 86 86">
+              <g fill="none" stroke="#f4efe5" stroke-width="7.2" stroke-linecap="round">
+                <circle cx="33" cy="42" r="19" stroke-dasharray="98 21" transform="rotate(22 33 42)" />
+                <circle cx="53" cy="44" r="19" stroke-dasharray="98 21" transform="rotate(202 53 44)" />
+              </g>
+            </svg>
+          </div>
+          <div>
+            <div class="wordmark"><span>ka</span><span class="o soft"></span><span>ka</span><span class="o soft"></span></div>
+            <div class="combo">
+              <svg width="44" height="44" viewBox="0 0 86 86">
+                <g fill="none" stroke="#123d39" stroke-width="7.2" stroke-linecap="round">
+                  <circle cx="33" cy="42" r="19" stroke-dasharray="98 21" transform="rotate(22 33 42)" />
+                  <circle cx="53" cy="44" r="19" stroke-dasharray="98 21" transform="rotate(202 53 44)" />
+                </g>
+              </svg>
+              <div class="wordmark"><span>ka</span><span class="o soft"></span><span>ka</span><span class="o soft"></span></div>
+            </div>
+          </div>
+        </div>
+        <div class="tests">
+          <div class="test"><div class="test-label">size test</div><div class="sizes">
+            <div class="appicon deep size32"><svg width="22" height="22" viewBox="0 0 86 86"><g fill="none" stroke="#f4efe5" stroke-width="9" stroke-linecap="round"><circle cx="33" cy="42" r="19" stroke-dasharray="94 25" transform="rotate(22 33 42)" /><circle cx="53" cy="44" r="19" stroke-dasharray="94 25" transform="rotate(202 53 44)" /></g></svg></div>
+            <div class="appicon deep size128"><svg width="44" height="44" viewBox="0 0 86 86"><g fill="none" stroke="#f4efe5" stroke-width="8" stroke-linecap="round"><circle cx="33" cy="42" r="19" stroke-dasharray="98 21" transform="rotate(22 33 42)" /><circle cx="53" cy="44" r="19" stroke-dasharray="98 21" transform="rotate(202 53 44)" /></g></svg></div>
+            <div class="appicon deep size1024"><svg width="60" height="60" viewBox="0 0 86 86"><g fill="none" stroke="#f4efe5" stroke-width="7.2" stroke-linecap="round"><circle cx="33" cy="42" r="19" stroke-dasharray="98 21" transform="rotate(22 33 42)" /><circle cx="53" cy="44" r="19" stroke-dasharray="98 21" transform="rotate(202 53 44)" /></g></svg></div>
+          </div></div>
+          <div class="test"><div class="test-label">black / white</div><div class="mono-swatch"><div class="mono-box"><svg width="48" height="48" viewBox="0 0 86 86"><g fill="none" stroke="#fff" stroke-width="7.2" stroke-linecap="round"><circle cx="33" cy="42" r="19" stroke-dasharray="98 21" transform="rotate(22 33 42)" /><circle cx="53" cy="44" r="19" stroke-dasharray="98 21" transform="rotate(202 53 44)" /></g></svg></div><div style="color:#111;font-size:13px;">more mature</div></div></div>
+          <div class="test"><div class="test-label">remark</div><div class="note">比 B1 更成熟。风险是和 A1 区别需要继续拉开。</div></div>
+        </div>
+      </article>
+    </div>
+
+    <div class="section-title">Direction C: 私站符号</div>
+    <div class="grid">
+      <article class="card">
+        <div class="card-head">
+          <div>
+            <h2>C1 / off-grid echo</h2>
+            <p class="note">更偏早期私人网站的“不完全规整”。双环变成轻微方圆混合。</p>
+          </div>
+          <div class="tag">rebel</div>
+        </div>
+        <div class="brand-row">
+          <div class="appicon ink">
+            <svg width="86" height="86" viewBox="0 0 86 86">
+              <g fill="none" stroke="#f4efe5" stroke-width="7" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M25 25 Q18 25 18 32 L18 48 Q18 60 31 60 Q43 60 43 47 L43 34 Q43 25 32 25 Z" stroke-dasharray="118 23" />
+                <path d="M45 27 Q58 27 64 35 Q70 43 65 53 Q60 62 48 62 Q38 62 38 51 L38 37 Q38 27 45 27 Z" stroke-dasharray="118 23" />
+              </g>
+            </svg>
+          </div>
+          <div>
+            <div class="wordmark"><span>ka</span><span class="o leftcut"></span><span>ka</span><span class="o cut"></span></div>
+            <div class="combo">
+              <svg width="44" height="44" viewBox="0 0 86 86">
+                <g fill="none" stroke="#173f35" stroke-width="7" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M25 25 Q18 25 18 32 L18 48 Q18 60 31 60 Q43 60 43 47 L43 34 Q43 25 32 25 Z" stroke-dasharray="118 23" />
+                  <path d="M45 27 Q58 27 64 35 Q70 43 65 53 Q60 62 48 62 Q38 62 38 51 L38 37 Q38 27 45 27 Z" stroke-dasharray="118 23" />
+                </g>
+              </svg>
+              <div class="wordmark"><span>ka</span><span class="o leftcut"></span><span>ka</span><span class="o cut"></span></div>
+            </div>
+          </div>
+        </div>
+        <div class="tests">
+          <div class="test"><div class="test-label">size test</div><div class="sizes">
+            <div class="appicon ink size32"><svg width="22" height="22" viewBox="0 0 86 86"><g fill="none" stroke="#f4efe5" stroke-width="9" stroke-linecap="round" stroke-linejoin="round"><path d="M25 25 Q18 25 18 32 L18 48 Q18 60 31 60 Q43 60 43 47 L43 34 Q43 25 32 25 Z" stroke-dasharray="112 29" /><path d="M45 27 Q58 27 64 35 Q70 43 65 53 Q60 62 48 62 Q38 62 38 51 L38 37 Q38 27 45 27 Z" stroke-dasharray="112 29" /></g></svg></div>
+            <div class="appicon ink size128"><svg width="44" height="44" viewBox="0 0 86 86"><g fill="none" stroke="#f4efe5" stroke-width="8" stroke-linecap="round" stroke-linejoin="round"><path d="M25 25 Q18 25 18 32 L18 48 Q18 60 31 60 Q43 60 43 47 L43 34 Q43 25 32 25 Z" stroke-dasharray="118 23" /><path d="M45 27 Q58 27 64 35 Q70 43 65 53 Q60 62 48 62 Q38 62 38 51 L38 37 Q38 27 45 27 Z" stroke-dasharray="118 23" /></g></svg></div>
+            <div class="appicon ink size1024"><svg width="60" height="60" viewBox="0 0 86 86"><g fill="none" stroke="#f4efe5" stroke-width="7" stroke-linecap="round" stroke-linejoin="round"><path d="M25 25 Q18 25 18 32 L18 48 Q18 60 31 60 Q43 60 43 47 L43 34 Q43 25 32 25 Z" stroke-dasharray="118 23" /><path d="M45 27 Q58 27 64 35 Q70 43 65 53 Q60 62 48 62 Q38 62 38 51 L38 37 Q38 27 45 27 Z" stroke-dasharray="118 23" /></g></svg></div>
+          </div></div>
+          <div class="test"><div class="test-label">black / white</div><div class="mono-swatch"><div class="mono-box"><svg width="48" height="48" viewBox="0 0 86 86"><g fill="none" stroke="#fff" stroke-width="7" stroke-linecap="round" stroke-linejoin="round"><path d="M25 25 Q18 25 18 32 L18 48 Q18 60 31 60 Q43 60 43 47 L43 34 Q43 25 32 25 Z" stroke-dasharray="118 23" /><path d="M45 27 Q58 27 64 35 Q70 43 65 53 Q60 62 48 62 Q38 62 38 51 L38 37 Q38 27 45 27 Z" stroke-dasharray="118 23" /></g></svg></div><div style="color:#111;font-size:13px;">distinctive</div></div></div>
+          <div class="test"><div class="test-label">remark</div><div class="note">最有个性。风险是小尺寸复杂度较高。</div></div>
+        </div>
+      </article>
+
+      <article class="card">
+        <div class="card-head">
+          <div>
+            <h2>C2 / kao mark</h2>
+            <p class="note">更像从 k/o 里抽出的私人符号。比 C1 更简化，更适合系统图标。</p>
+          </div>
+          <div class="tag">symbolic</div>
+        </div>
+        <div class="brand-row">
+          <div class="appicon deep">
+            <svg width="86" height="86" viewBox="0 0 86 86">
+              <g fill="none" stroke="#f4efe5" stroke-width="7.4" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M28 21 L28 64" />
+                <path d="M28 43 Q38 24 52 27 Q66 31 66 43 Q66 55 54 59 Q42 63 34 53" stroke-dasharray="109 22" />
+                <path d="M42 43 Q33 54 28 64" />
+              </g>
+            </svg>
+          </div>
+          <div>
+            <div class="wordmark"><span>ka</span><span class="o cut"></span><span>ka</span><span class="o soft"></span></div>
+            <div class="combo">
+              <svg width="44" height="44" viewBox="0 0 86 86">
+                <g fill="none" stroke="#123d39" stroke-width="7.4" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M28 21 L28 64" />
+                  <path d="M28 43 Q38 24 52 27 Q66 31 66 43 Q66 55 54 59 Q42 63 34 53" stroke-dasharray="109 22" />
+                  <path d="M42 43 Q33 54 28 64" />
+                </g>
+              </svg>
+              <div class="wordmark"><span>ka</span><span class="o cut"></span><span>ka</span><span class="o soft"></span></div>
+            </div>
+          </div>
+        </div>
+        <div class="tests">
+          <div class="test"><div class="test-label">size test</div><div class="sizes">
+            <div class="appicon deep size32"><svg width="22" height="22" viewBox="0 0 86 86"><g fill="none" stroke="#f4efe5" stroke-width="9" stroke-linecap="round" stroke-linejoin="round"><path d="M28 21 L28 64" /><path d="M28 43 Q38 24 52 27 Q66 31 66 43 Q66 55 54 59 Q42 63 34 53" stroke-dasharray="103 28" /><path d="M42 43 Q33 54 28 64" /></g></svg></div>
+            <div class="appicon deep size128"><svg width="44" height="44" viewBox="0 0 86 86"><g fill="none" stroke="#f4efe5" stroke-width="8" stroke-linecap="round" stroke-linejoin="round"><path d="M28 21 L28 64" /><path d="M28 43 Q38 24 52 27 Q66 31 66 43 Q66 55 54 59 Q42 63 34 53" stroke-dasharray="109 22" /><path d="M42 43 Q33 54 28 64" /></g></svg></div>
+            <div class="appicon deep size1024"><svg width="60" height="60" viewBox="0 0 86 86"><g fill="none" stroke="#f4efe5" stroke-width="7.4" stroke-linecap="round" stroke-linejoin="round"><path d="M28 21 L28 64" /><path d="M28 43 Q38 24 52 27 Q66 31 66 43 Q66 55 54 59 Q42 63 34 53" stroke-dasharray="109 22" /><path d="M42 43 Q33 54 28 64" /></g></svg></div>
+          </div></div>
+          <div class="test"><div class="test-label">black / white</div><div class="mono-swatch"><div class="mono-box"><svg width="48" height="48" viewBox="0 0 86 86"><g fill="none" stroke="#fff" stroke-width="7.4" stroke-linecap="round" stroke-linejoin="round"><path d="M28 21 L28 64" /><path d="M28 43 Q38 24 52 27 Q66 31 66 43 Q66 55 54 59 Q42 63 34 53" stroke-dasharray="109 22" /><path d="M42 43 Q33 54 28 64" /></g></svg></div><div style="color:#111;font-size:13px;">most rebel</div></div></div>
+          <div class="test"><div class="test-label">remark</div><div class="note">最有“私站符号”气质。风险是偏离双环核心。</div></div>
+        </div>
+      </article>
+    </div>
+
+    <div class="section-title">场景 mockup / 以 A1 为例</div>
+    <div class="mockups">
+      <div class="mock">
+        <div class="mock-title">dock</div>
+        <div class="dock">
+          <div class="fake"></div>
+          <div class="fake"></div>
+          <div class="appicon deep" style="width:48px;height:48px;border-radius:13px;"><svg width="34" height="34" viewBox="0 0 86 86"><g fill="none" stroke="#f4efe5" stroke-width="8" stroke-linecap="round"><circle cx="34" cy="40" r="20" stroke-dasharray="103 22" transform="rotate(-34 34 40)" /><circle cx="52" cy="46" r="20" stroke-dasharray="103 22" transform="rotate(146 52 46)" /></g></svg></div>
+          <div class="fake"></div>
+        </div>
+      </div>
+      <div class="mock">
+        <div class="mock-title">phone home</div>
+        <div class="phone">
+          <div class="fake"></div>
+          <div class="appicon deep" style="width:26px;height:26px;border-radius:8px;"><svg width="18" height="18" viewBox="0 0 86 86"><g fill="none" stroke="#f4efe5" stroke-width="10" stroke-linecap="round"><circle cx="34" cy="40" r="20" stroke-dasharray="96 29" transform="rotate(-34 34 40)" /><circle cx="52" cy="46" r="20" stroke-dasharray="96 29" transform="rotate(146 52 46)" /></g></svg></div>
+          <div class="fake"></div>
+          <div class="fake"></div>
+        </div>
+      </div>
+      <div class="mock">
+        <div class="mock-title">splash</div>
+        <div class="splash">
+          <div class="combo" style="margin:0;">
+            <svg width="36" height="36" viewBox="0 0 86 86"><g fill="none" stroke="#123d39" stroke-width="7" stroke-linecap="round"><circle cx="34" cy="40" r="20" stroke-dasharray="103 22" transform="rotate(-34 34 40)" /><circle cx="52" cy="46" r="20" stroke-dasharray="103 22" transform="rotate(146 52 46)" /></g></svg>
+            <div class="wordmark" style="font-size:28px;"><span>ka</span><span class="o soft"></span><span>ka</span><span class="o soft"></span></div>
+          </div>
+        </div>
+      </div>
+      <div class="mock">
+        <div class="mock-title">web header</div>
+        <div class="webbar">
+          <svg width="28" height="28" viewBox="0 0 86 86"><g fill="none" stroke="#123d39" stroke-width="7" stroke-linecap="round"><circle cx="34" cy="40" r="20" stroke-dasharray="103 22" transform="rotate(-34 34 40)" /><circle cx="52" cy="46" r="20" stroke-dasharray="103 22" transform="rotate(146 52 46)" /></g></svg>
+          <div class="wordmark" style="font-size:20px;"><span>ka</span><span class="o soft"></span><span>ka</span><span class="o soft"></span></div>
+          <div class="line"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</body>
+</html>
+
