@@ -1,0 +1,608 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>cuphop logo round 1</title>
+    <style>
+      :root {
+        --forest: #395542;
+        --ink: #171a18;
+        --paper: #f8f5ee;
+        --warm: #efe4c8;
+        --gold: #c8aa6a;
+        --muted: #7e867f;
+        --line: #d9d7cf;
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+
+      body {
+        margin: 0;
+        background: #ece8df;
+        color: var(--ink);
+        font-family:
+          "Avenir Next", Avenir, Inter, ui-sans-serif, system-ui, -apple-system,
+          BlinkMacSystemFont, "Segoe UI", sans-serif;
+        letter-spacing: 0;
+      }
+
+      .page {
+        max-width: 1440px;
+        margin: 0 auto;
+        padding: 48px;
+      }
+
+      header {
+        display: grid;
+        grid-template-columns: 1.1fr 0.9fr;
+        gap: 36px;
+        align-items: end;
+        margin-bottom: 34px;
+      }
+
+      h1 {
+        margin: 0 0 10px;
+        font-size: 42px;
+        font-weight: 560;
+        line-height: 1.05;
+      }
+
+      .lead {
+        max-width: 760px;
+        margin: 0;
+        color: #4e554f;
+        font-size: 16px;
+        line-height: 1.7;
+      }
+
+      .tokens {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 10px;
+      }
+
+      .token {
+        min-height: 82px;
+        padding: 12px;
+        border: 1px solid rgba(23, 26, 24, 0.12);
+        background: rgba(248, 245, 238, 0.58);
+      }
+
+      .swatch {
+        width: 100%;
+        height: 24px;
+        margin-bottom: 12px;
+      }
+
+      .token strong {
+        display: block;
+        font-size: 12px;
+        font-weight: 620;
+      }
+
+      .token span {
+        color: #68716a;
+        font-size: 11px;
+      }
+
+      .grid {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 22px;
+      }
+
+      .card {
+        overflow: hidden;
+        border: 1px solid rgba(23, 26, 24, 0.13);
+        background: var(--paper);
+        border-radius: 8px;
+        box-shadow: 0 18px 44px rgba(40, 45, 41, 0.08);
+      }
+
+      .stage {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        min-height: 250px;
+      }
+
+      .sample {
+        display: grid;
+        place-items: center;
+        min-height: 250px;
+        padding: 22px;
+      }
+
+      .sample.light {
+        background: #fffdf8;
+        color: var(--ink);
+      }
+
+      .sample.dark {
+        background: var(--forest);
+        color: var(--warm);
+      }
+
+      .sample.dark.gold {
+        color: var(--gold);
+      }
+
+      .lockup {
+        display: flex;
+        align-items: center;
+        gap: 15px;
+        color: currentColor;
+      }
+
+      .stage .lockup {
+        flex-direction: column;
+        gap: 10px;
+        text-align: center;
+      }
+
+      .lockup.stacked {
+        flex-direction: column;
+        gap: 12px;
+      }
+
+      .mark {
+        width: 58px;
+        height: 58px;
+        flex: 0 0 auto;
+      }
+
+      .stage .mark {
+        width: 52px;
+        height: 52px;
+      }
+
+      .mark.large {
+        width: 74px;
+        height: 74px;
+      }
+
+      .stage .mark.large {
+        width: 68px;
+        height: 68px;
+      }
+
+      .word {
+        font-size: 38px;
+        font-weight: 520;
+        line-height: 1;
+        letter-spacing: 0.012em;
+      }
+
+      .word.tight {
+        letter-spacing: 0.004em;
+      }
+
+      .word.narrow {
+        font-stretch: condensed;
+        letter-spacing: 0.03em;
+      }
+
+      .tag {
+        margin-top: 8px;
+        color: currentColor;
+        font-size: 9px;
+        font-weight: 560;
+        letter-spacing: 0.18em;
+        opacity: 0.74;
+        text-transform: uppercase;
+      }
+
+      .custom-word {
+        display: flex;
+        align-items: baseline;
+        gap: 1px;
+        color: currentColor;
+        font-size: 38px;
+        font-weight: 520;
+        line-height: 1;
+      }
+
+      .letter-u,
+      .letter-o {
+        width: 0.72em;
+        height: 0.82em;
+        transform: translateY(0.1em);
+      }
+
+      .letter-o {
+        width: 0.78em;
+      }
+
+      .mini-row {
+        display: flex;
+        gap: 10px;
+        align-items: center;
+        justify-content: center;
+        margin-top: 16px;
+        color: currentColor;
+      }
+
+      .mini {
+        width: 30px;
+        height: 30px;
+        padding: 5px;
+        border: 1px solid currentColor;
+        border-radius: 6px;
+        opacity: 0.58;
+      }
+
+      .notes {
+        padding: 19px 20px 22px;
+        border-top: 1px solid rgba(23, 26, 24, 0.1);
+      }
+
+      .eyebrow {
+        margin: 0 0 7px;
+        color: var(--forest);
+        font-size: 11px;
+        font-weight: 680;
+        letter-spacing: 0.16em;
+        text-transform: uppercase;
+      }
+
+      h2 {
+        margin: 0 0 8px;
+        font-size: 20px;
+        font-weight: 620;
+      }
+
+      .notes p {
+        margin: 0;
+        color: #515952;
+        font-size: 13px;
+        line-height: 1.7;
+      }
+
+      .foot {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 18px;
+        margin-top: 26px;
+        color: #59615a;
+        font-size: 13px;
+        line-height: 1.7;
+      }
+
+      .foot div {
+        padding: 18px;
+        border: 1px solid rgba(23, 26, 24, 0.12);
+        background: rgba(248, 245, 238, 0.62);
+        border-radius: 8px;
+      }
+
+      svg {
+        display: block;
+        overflow: visible;
+      }
+
+      .stroke {
+        fill: none;
+        stroke: currentColor;
+        stroke-linecap: round;
+        stroke-linejoin: round;
+      }
+
+      .thin {
+        stroke-width: 5.2;
+      }
+
+      .medium {
+        stroke-width: 6.4;
+      }
+
+      .heavy {
+        stroke-width: 7.2;
+      }
+
+      .fill {
+        fill: currentColor;
+      }
+
+      @media (max-width: 980px) {
+        .page {
+          padding: 28px;
+        }
+
+        header,
+        .grid,
+        .foot {
+          grid-template-columns: 1fr;
+        }
+
+        .tokens {
+          grid-template-columns: repeat(2, 1fr);
+        }
+      }
+
+      @media (max-width: 640px) {
+        .stage {
+          grid-template-columns: 1fr;
+        }
+
+        .sample,
+        .stage {
+          min-height: 210px;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <main class="page">
+      <header>
+        <div>
+          <h1>cuphop logo round 1</h1>
+          <p class="lead">
+            六个第一轮方向：三组 Lifted Cup，三组 Letter Cup。所有方案都先测试黑白形体，再放进森林绿包装环境里看暖白或香槟金反差。
+          </p>
+        </div>
+        <div class="tokens" aria-label="color tokens">
+          <div class="token">
+            <div class="swatch" style="background: #395542"></div>
+            <strong>Forest Green</strong>
+            <span>#395542 / PANTONE 7736 C</span>
+          </div>
+          <div class="token">
+            <div class="swatch" style="background: #c8aa6a"></div>
+            <strong>Matte Champagne</strong>
+            <span>#C8AA6A</span>
+          </div>
+          <div class="token">
+            <div class="swatch" style="background: #efe4c8"></div>
+            <strong>Warm White</strong>
+            <span>#EFE4C8</span>
+          </div>
+          <div class="token">
+            <div class="swatch" style="background: #171a18"></div>
+            <strong>Single Color</strong>
+            <span>#171A18</span>
+          </div>
+        </div>
+      </header>
+
+      <section class="grid" aria-label="cuphop logo concepts">
+        <article class="card">
+          <div class="stage">
+            <div class="sample light">
+              <div>
+                <div class="lockup">
+                  <svg class="mark" viewBox="0 0 80 80" aria-hidden="true">
+                    <path class="stroke medium" d="M22 31h34c0 16-6 26-17 26S22 47 22 31Z" />
+                    <path class="stroke thin" d="M20 31c8-7 28-7 38 0" />
+                    <path class="stroke thin" d="M31 62c6 3 17 3 23-1" />
+                    <path class="stroke thin" d="M57 38c8 1 10 10 2 14" />
+                  </svg>
+                  <div>
+                    <div class="word">cuphop</div>
+                    <div class="tag">whole-leaf tea</div>
+                  </div>
+                </div>
+                <div class="mini-row">
+                  <svg class="mini" viewBox="0 0 80 80"><path class="stroke medium" d="M22 31h34c0 16-6 26-17 26S22 47 22 31Z" /><path class="stroke thin" d="M20 31c8-7 28-7 38 0" /></svg>
+                  <svg class="mini" viewBox="0 0 80 80"><path class="stroke medium" d="M24 33h30c0 15-5 23-15 23S24 48 24 33Z" /></svg>
+                </div>
+              </div>
+            </div>
+            <div class="sample dark gold">
+              <div class="lockup stacked">
+                <svg class="mark large" viewBox="0 0 80 80" aria-hidden="true">
+                  <path class="stroke medium" d="M22 31h34c0 16-6 26-17 26S22 47 22 31Z" />
+                  <path class="stroke thin" d="M20 31c8-7 28-7 38 0" />
+                  <path class="stroke thin" d="M31 62c6 3 17 3 23-1" />
+                  <path class="stroke thin" d="M57 38c8 1 10 10 2 14" />
+                </svg>
+                <div>
+                  <div class="word">cuphop</div>
+                  <div class="tag">whole-leaf tea</div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="notes">
+            <p class="eyebrow">Lifted Cup 01</p>
+            <h2>Steady Lift</h2>
+            <p>最稳妥的一杯：杯形直接、杯口轻微上扬，底部短弧承担 hop。适合包装正面和注册初稿，但需要继续打磨避免普通咖啡杯感。</p>
+          </div>
+        </article>
+
+        <article class="card">
+          <div class="stage">
+            <div class="sample light">
+              <div class="lockup">
+                <svg class="mark" viewBox="0 0 80 80" aria-hidden="true">
+                  <path class="stroke heavy" d="M21 35c11-7 30-7 39 0" />
+                  <path class="stroke medium" d="M25 35c2 15 9 23 20 21 9-2 14-9 15-21" />
+                  <path class="stroke thin" d="M27 62c9 6 25 5 34-2" />
+                  <path class="stroke thin" d="M46 24c5-2 12-1 16 2" />
+                </svg>
+                <div>
+                  <div class="word tight">cuphop</div>
+                  <div class="tag">whole-leaf tea</div>
+                </div>
+              </div>
+            </div>
+            <div class="sample dark">
+              <div class="lockup">
+                <svg class="mark" viewBox="0 0 80 80" aria-hidden="true">
+                  <path class="stroke heavy" d="M21 35c11-7 30-7 39 0" />
+                  <path class="stroke medium" d="M25 35c2 15 9 23 20 21 9-2 14-9 15-21" />
+                  <path class="stroke thin" d="M27 62c9 6 25 5 34-2" />
+                  <path class="stroke thin" d="M46 24c5-2 12-1 16 2" />
+                </svg>
+                <div>
+                  <div class="word tight">cuphop</div>
+                  <div class="tag">whole-leaf tea</div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="notes">
+            <p class="eyebrow">Lifted Cup 02</p>
+            <h2>Soft Hop</h2>
+            <p>比 01 更年轻：杯口、液面、阴影都带轻微运动，但主体仍然克制。适合社媒动效延展，静态包装上需要控制线条不要太“饮料化”。</p>
+          </div>
+        </article>
+
+        <article class="card">
+          <div class="stage">
+            <div class="sample light">
+              <div class="lockup">
+                <svg class="mark" viewBox="0 0 80 80" aria-hidden="true">
+                  <path class="stroke medium" d="M20 33h40" />
+                  <path class="stroke medium" d="M26 33c1 15 6 24 14 24s13-9 14-24" />
+                  <path class="stroke thin" d="M31 44c5 4 14 4 19 0" />
+                  <path class="stroke thin" d="M28 64h24" />
+                </svg>
+                <div>
+                  <div class="word narrow">cuphop</div>
+                  <div class="tag">whole-leaf tea</div>
+                </div>
+              </div>
+            </div>
+            <div class="sample dark gold">
+              <div class="lockup">
+                <svg class="mark" viewBox="0 0 80 80" aria-hidden="true">
+                  <path class="stroke medium" d="M20 33h40" />
+                  <path class="stroke medium" d="M26 33c1 15 6 24 14 24s13-9 14-24" />
+                  <path class="stroke thin" d="M31 44c5 4 14 4 19 0" />
+                  <path class="stroke thin" d="M28 64h24" />
+                </svg>
+                <div>
+                  <div class="word narrow">cuphop</div>
+                  <div class="tag">whole-leaf tea</div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="notes">
+            <p class="eyebrow">Lifted Cup 03</p>
+            <h2>Reserve Cup</h2>
+            <p>更精品饮品标签化，杯形由几条水平与垂直曲线组成，留白多，香槟金版本最像正式包装。风险是亲近感较弱。</p>
+          </div>
+        </article>
+
+        <article class="card">
+          <div class="stage">
+            <div class="sample light">
+              <div>
+                <div class="custom-word" aria-label="cuphop">
+                  <span>c</span>
+                  <svg class="letter-u" viewBox="0 0 38 44" aria-hidden="true">
+                    <path class="stroke medium" d="M8 7v18c0 8 4 12 11 12s11-4 11-12V7" />
+                    <path class="stroke thin" d="M9 10c6-4 15-4 21 0" />
+                  </svg>
+                  <span>phop</span>
+                </div>
+                <div class="tag">whole-leaf tea</div>
+              </div>
+            </div>
+            <div class="sample dark">
+              <div>
+                <div class="custom-word" aria-label="cuphop">
+                  <span>c</span>
+                  <svg class="letter-u" viewBox="0 0 38 44" aria-hidden="true">
+                    <path class="stroke medium" d="M8 7v18c0 8 4 12 11 12s11-4 11-12V7" />
+                    <path class="stroke thin" d="M9 10c6-4 15-4 21 0" />
+                  </svg>
+                  <span>phop</span>
+                </div>
+                <div class="tag">whole-leaf tea</div>
+              </div>
+            </div>
+          </div>
+          <div class="notes">
+            <p class="eyebrow">Letter Cup 01</p>
+            <h2>U as Cup</h2>
+            <p>把 u 直接定制成杯形，是最直觉的字母方案。独特性比独立杯图标强，但需要进一步统一笔画粗细，让它不像临时替换的符号。</p>
+          </div>
+        </article>
+
+        <article class="card">
+          <div class="stage">
+            <div class="sample light">
+              <div>
+                <div class="custom-word" aria-label="cuphop">
+                  <span>cuph</span>
+                  <svg class="letter-o" viewBox="0 0 44 44" aria-hidden="true">
+                    <path class="stroke medium" d="M9 23c0-9 5-15 13-15s13 6 13 15-5 15-13 15S9 32 9 23Z" />
+                    <path class="stroke thin" d="M14 22c5 3 12 3 17 0" />
+                  </svg>
+                  <span>p</span>
+                </div>
+                <div class="tag">whole-leaf tea</div>
+              </div>
+            </div>
+            <div class="sample dark gold">
+              <div>
+                <div class="custom-word" aria-label="cuphop">
+                  <span>cuph</span>
+                  <svg class="letter-o" viewBox="0 0 44 44" aria-hidden="true">
+                    <path class="stroke medium" d="M9 23c0-9 5-15 13-15s13 6 13 15-5 15-13 15S9 32 9 23Z" />
+                    <path class="stroke thin" d="M14 22c5 3 12 3 17 0" />
+                  </svg>
+                  <span>p</span>
+                </div>
+                <div class="tag">whole-leaf tea</div>
+              </div>
+            </div>
+          </div>
+          <div class="notes">
+            <p class="eyebrow">Letter Cup 02</p>
+            <h2>Liquid O</h2>
+            <p>把第二个 o 做成杯口或液面，整体读音不受影响。它比 U as Cup 更隐蔽、更高级，但饮品提示较弱，适合品牌感优先。</p>
+          </div>
+        </article>
+
+        <article class="card">
+          <div class="stage">
+            <div class="sample light">
+              <div>
+                <div class="lockup">
+                  <svg class="mark" viewBox="0 0 80 80" aria-hidden="true">
+                    <path class="stroke heavy" d="M51 25c-5-5-19-6-27 2-8 8-8 20 0 27 8 8 22 7 28 0" />
+                    <path class="stroke medium" d="M33 25v20c0 8 4 12 11 12s11-4 11-12V25" />
+                    <path class="stroke thin" d="M34 30c5-4 15-4 20 0" />
+                  </svg>
+                  <div>
+                    <div class="word tight">cuphop</div>
+                    <div class="tag">whole-leaf tea</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="sample dark">
+              <div class="lockup">
+                <svg class="mark" viewBox="0 0 80 80" aria-hidden="true">
+                  <path class="stroke heavy" d="M51 25c-5-5-19-6-27 2-8 8-8 20 0 27 8 8 22 7 28 0" />
+                  <path class="stroke medium" d="M33 25v20c0 8 4 12 11 12s11-4 11-12V25" />
+                  <path class="stroke thin" d="M34 30c5-4 15-4 20 0" />
+                </svg>
+                <div>
+                  <div class="word tight">cuphop</div>
+                  <div class="tag">whole-leaf tea</div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="notes">
+            <p class="eyebrow">Letter Cup 03</p>
+            <h2>C + U Monogram</h2>
+            <p>用 c 包住 u，形成可独立使用的 monogram。它最适合 favicon、社媒头像和包装封签，也最有注册资产潜力。</p>
+          </div>
+        </article>
+      </section>
+
+      <section class="foot" aria-label="round 1 criteria">
+        <div><strong>优先级</strong><br />包装正面 A > 社媒头像 B > 包装细节系统 C。第一轮先判断形体方向，不追求最终字体完成度。</div>
+        <div><strong>颜色原则</strong><br />形体必须黑白成立；绿底上测试香槟金与暖白。金色只作为包装工艺方向，不绑定商标本体。</div>
+        <div><strong>下一步</strong><br />建议先淘汰 2-3 个，再把剩余方案做成更严格的网格、字距、小尺寸和中英文并列包装测试。</div>
+      </section>
+    </main>
+  </body>
+</html>
